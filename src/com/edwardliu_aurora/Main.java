@@ -9,6 +9,6 @@ public class Main {
     public static void main(String[] args) {
         BasicStatistic bs = new BasicStatistic();
         //bs.getCharCount("D:\\作业\\软件工程-18-09-05\\WordCount\\设计文档.md");
-        System.out.println(bs.getWordCount("D:\\作业\\软件工程-18-09-05\\WordCount\\src\\bean\\CharCount.java"));
+        System.out.println(bs.getLineCount("D:\\作业\\软件工程-18-09-05\\WordCount\\src\\bean\\CharCount.java"));
     }
 }

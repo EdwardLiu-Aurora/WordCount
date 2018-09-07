@@ -73,7 +73,7 @@ public class BasicStatistic {
             // 按行读取文件并转化成流
             lines = Files.lines(path, charsetRecognize(filePath));
             Pattern pattern = Pattern.compile("\\w+");
-            // 使用 lambda 表达式和 nio 进行归并统计字符数
+            // 使用 lambda 表达式和 nio 进行归并统计词汇数
             wordCount = lines.parallel().reduce(0,
                     (total, line) ->
                     {
@@ -95,6 +95,32 @@ public class BasicStatistic {
             return 0;
         }
         return wordCount;
+    }
+
+    // 返回文件的行数
+    public long getLineCount(String filePath){
+        long lineCount = 0;
+        // 为了避免文本太大，这里采用惰性的 Stream<String> 对象
+        // 注意文件的编码只能为 UTF_8 类型，不然会出现不可知的错误
+        Stream<String> lines = null;
+        // 新建 nio 文件路径对象
+        Path path = Paths.get(filePath);
+        try {
+            // 按行读取文件并转化成流
+            lines = Files.lines(path, charsetRecognize(filePath));
+            // 使用 lambda 表达式和 nio 进行归并统计行数
+            lineCount = lines.parallel().reduce(0,
+                    (total, line) -> total + 1,
+                    (total1, total2) -> total1 + total2);
+            lines.close();
+        }
+        catch (IOException e){
+            e.printStackTrace();
+            System.out.println("文件不存在或无法访问");
+            if(lines != null) lines.close();
+            return 0;
+        }
+        return lineCount;
     }
 
     // 文件编码类型简单识别
