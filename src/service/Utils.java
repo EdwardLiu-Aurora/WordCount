@@ -3,9 +3,12 @@ package service;
 import java.io.File;
 import java.io.InputStream;
 import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Stream;
 
 public class Utils {
     // 文件编码类型简单识别
@@ -18,8 +21,15 @@ public class Utils {
             in.close();
             if (b[0] == -17 && b[1] == -69 && b[2] == -65)
                 return Charset.forName("UTF-8");
-            else
-                return Charset.forName("GBK");
+            else{
+                try (Stream<String> lines = Files.lines(Paths.get(filePath), Charset.forName("UTF-8"))){
+                    lines.count();
+                    return Charset.forName("UTF-8");
+                }
+                catch(Exception e){
+                    return Charset.forName("GBK");
+                }
+            }
         }
         catch(Exception e){
             e.printStackTrace();
