@@ -1,0 +1,37 @@
+/*
+ *  Introduction:
+ *  测试C++中的字符串多行书写规则
+ */
+ 
+#include <iostream>
+#include <string>
+using namespace std;
+ 
+int main()
+{
+    //错误示例下一行前不能有空格
+    char chstr[] = "abcabc\
+                   abcabc";
+    //错误示例'\'要紧挨着换行处的字符
+    char chstr1[] = "abcabc \
+abcabc";
+    //方法1
+    char chstr2[] = "abcabc\
+abcabc";
+    //方法2
+    char chstr3[] = "abcabc"
+        "abcabc";
+    printf("chstr[]: %s\n", chstr);
+    printf("chstr1[]: %s\n", chstr1);
+    printf("chstr2[]: %s\n", chstr2);
+    printf("chstr3[]: %s\n", chstr3);
+ 
+    string str = "abcabc\
+abcabc";
+    string str1 = "abcabc"
+        "abcabc";
+    cout << "str:" << str << endl;
+    cout << "str1:" << str1 << endl;
+    return 0;
+}
+输出结果：

@@ -30,14 +30,14 @@ public class BasicStatistic {
         Stream<String> lines = null;
         try {
             // 按行读取文件并转化成流
-            lines = Files.lines(path, charsetRecognize(filePath));
+            lines = Files.lines(path, Utils.charsetRecognize(filePath));
             // 使用 lambda 表达式和 nio 进行归并统计字符数
             allCharCount = lines.parallel().reduce(0,
                     (total, line) -> total + line.length(),
                     (total1, total2) -> total1 + total2);
             lines.close();
             // 按行读取文件并转化成流
-            lines = Files.lines(path, charsetRecognize(filePath));
+            lines = Files.lines(path, Utils.charsetRecognize(filePath));
             // 使用 lambda 表达式和 nio 进行归并统计中文字数
             chnCharCount = lines.parallel().reduce(0,
                     (total, line) ->
@@ -71,7 +71,7 @@ public class BasicStatistic {
         Path path = Paths.get(filePath);
         try {
             // 按行读取文件并转化成流
-            lines = Files.lines(path, charsetRecognize(filePath));
+            lines = Files.lines(path, Utils.charsetRecognize(filePath));
             Pattern pattern = Pattern.compile("\\w+");
             // 使用 lambda 表达式和 nio 进行归并统计词汇数
             wordCount = lines.parallel().reduce(0,
@@ -107,7 +107,7 @@ public class BasicStatistic {
         Path path = Paths.get(filePath);
         try {
             // 按行读取文件并转化成流
-            lines = Files.lines(path, charsetRecognize(filePath));
+            lines = Files.lines(path, Utils.charsetRecognize(filePath));
             // 使用 lambda 表达式和 nio 进行归并统计行数
             lineCount = lines.parallel().reduce(0,
                     (total, line) -> total + 1,
@@ -121,24 +121,5 @@ public class BasicStatistic {
             return 0;
         }
         return lineCount;
-    }
-
-    // 文件编码类型简单识别
-    private Charset charsetRecognize(String filePath){
-        try{
-            File file = new File(filePath);
-            InputStream in = new java.io.FileInputStream(file);
-            byte[] b = new byte[3];
-            in.read(b);
-            in.close();
-            if (b[0] == -17 && b[1] == -69 && b[2] == -65)
-                return Charset.forName("UTF-8");
-            else
-                return Charset.forName("GBK");
-        }
-        catch(Exception e){
-            e.printStackTrace();
-            return Charset.forName("UTF-8");
-        }
     }
 }
