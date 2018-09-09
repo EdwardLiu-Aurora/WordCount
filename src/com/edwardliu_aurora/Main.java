@@ -31,7 +31,8 @@ public class Main {
                     replaceAll("\\?","[^/\\\\:*?<>|]").
                     replaceAll("\\*","[^/\\\\:*?<>|]*").
                     replaceAll("\\.","\\\\.");
-            ArrayList<String> filePaths = Utils.getFilesPath(new File("").getAbsolutePath(), filePattern);
+            String folderPath = new File(".").getAbsolutePath();
+            ArrayList<String> filePaths = Utils.getFilesPath(folderPath, filePattern);
             for(String filePath:filePaths) {
                 System.out.println();
                 System.out.println("文件: " + filePath);

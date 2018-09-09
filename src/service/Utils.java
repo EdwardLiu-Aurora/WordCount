@@ -51,7 +51,7 @@ public class Utils {
                 if(files[i].isDirectory()) {
                     filePaths.addAll(getFilesPath(files[i].getPath(),filePattern));
                 } else {
-                    Matcher matcher = pattern.matcher(files[i].getPath());
+                    Matcher matcher = pattern.matcher(files[i].getName());
                     if(matcher.find()) filePaths.add(files[i].getPath());
                 }
             }
