@@ -16,6 +16,7 @@ public class Main {
         boolean lineCount = false;
         boolean directory = false;
         boolean detailLine = false;
+
         for(int i=0;i<args.length-1;i++){
             if(args[i].equals("-c")) charCount = true;
             else if(args[i].equals("-w")) wordCount = true;

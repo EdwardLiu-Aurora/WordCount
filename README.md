@@ -17,4 +17,5 @@ wc.exe -a -s *.java	// ·µ»Ø wc.exe ËùÔÚÄ¿Â¼¼°Æä×ÓÄ¿Â¼ÏÂµÄËùÓÐ java ÎÄ¼þµÄÏêÏ¸ÐÐÊ
 1. ÎÄ¼þÍ¨Åä·û±ØÐëºÍ -s ÃüÁîÒ»ÆðÊ¹ÓÃ
 2. -s ÃüÁî±ØÐëºÍÆäËûÃüÁîÒ»ÆðÊ¹ÓÃ
 3. -c -w -l -a ¿ÉÒÔÍ¬Ê±Ê¹ÓÃ
-4. Èç¹ûÊ¹ÓÃ -s ÃüÁî£¬Ôò wc.exe ±ØÐëÎ»ÓÚÒªËÑÑ°µÄÄ¿Â¼Í¬¼¶Ä¿Â¼ÏÂ£¬ÇÒ¸ÃÄ¿Â¼Ã»ÓÐÄÜÆ¥ÅäµÄÎÄ¼þ¡£
+4. Èç¹ûÊ¹ÓÃ -s ÃüÁî£¬ÇÒ wc.exe ÒªËÑÑ°µÄÎÄ¼þÓÐ´¦ÓÚÍ¬Ä¿Â¼ÏÂµÄ£¬ÒòÎªÒª±ÜÃâwin10×Ô´øÃüÁîÍ¨Åä·û¶Ô³ÌÐòµÄÓ°Ïì£¬ÐèÒªÔÚÍ¨Åä·ûÅÔ¼ÓÉÏ""
+	Àý×Ó£º	wc.exe Î»ÓÚ xx Ä¿Â¼ÏÂ£¬xxÄ¿Â¼ÏÂÍ¬Ê±ÓÐ xx/wc.exe¡¢xx/a.java¡¢xx/b.java ... £¬ÔòÈç¹ûÐèÒªÓÃÍ¨Åä·û£¬ÔòÃüÁîÓ¦Îª wc.exe -a -s "*.java" 
